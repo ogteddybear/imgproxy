@@ -1,0 +1,25 @@
+app = "imgproxy"
+primary_region = "ord"
+
+[build]
+  image = "darthsim/imgproxy:latest"
+
+[env]
+  IMGPROXY_LOG_LEVEL = "info"
+
+[[services]]
+  internal_port = 8080
+  protocol = "tcp"
+
+  [[services.ports]]
+    port = 80
+    handlers = ["http"]
+
+  [[services.ports]]
+    port = 443
+    handlers = ["tls", "http"]
+
+  [[services.concurrency]]
+    type = "requests"
+    soft_limit = 20
+    hard_limit = 25
