@@ -1,5 +1,5 @@
 app = "imgproxy"
-primary_region = "ord"
+primary_region = "ams"
 
 [build]
   image = "darthsim/imgproxy:latest"
